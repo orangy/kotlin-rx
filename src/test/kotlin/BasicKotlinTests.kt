@@ -35,10 +35,11 @@ public class BasicKotlinTests : KotlinTests() {
 
     [Test]
     public fun testCreate() {
-        Observable.create<String> {
+        val observable = Observable.create<String> {
             it.onNext("Hello")
             it.onCompleted()
-        }.subscribe { a?.received(it) }
+        }
+        observable.subscribe { a!!.received(it) }
 
         verify(a, times(1)).received("Hello")
     }

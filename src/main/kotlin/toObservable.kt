@@ -2,6 +2,8 @@ package rx.lang.kotlin
 
 import rx.*
 import rx.Observable.OnSubscribe
+import rx.Observable.Transformer
+import rx.functions.Action1
 
 public fun<T> Function1<Subscriber<in T>, Unit>.asObservable(): Observable<T> = Observable.create(this)
 public fun<T> Function0<Observable<T>>.defer(): Observable<T> = Observable.defer(this)

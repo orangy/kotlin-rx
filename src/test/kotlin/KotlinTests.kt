@@ -30,11 +30,9 @@ public abstract class KotlinTests {
         MockitoAnnotations.initMocks(this)
     }
 
-    fun received<T>(): (T?) -> Unit {
-        return {(result: T?) -> a!!.received(result) }
-    }
+    fun received<T>(): (T) -> Unit = { a!!.received(it) }
 
-    public trait ScriptAssertion{
+    public trait ScriptAssertion {
         fun error(e: Throwable?)
 
         fun received(e: Any?)
